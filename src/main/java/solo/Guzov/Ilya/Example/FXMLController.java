@@ -5,21 +5,23 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
-public class FXMLController {
+public class FXMLController{
     @FXML
     private Label label;
 
     @FXML
+    private TextArea codeArea;
+
+    @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        System.out.println(Client.getRespServer());
-        label.setText(Client.getRespServer());
         Client.setClientCommand(codeArea.getText());
+        label.setText(Client.getRespServer());
         codeArea.clear();
     }
 
-    @FXML
-    private TextArea codeArea;
+    public void refreshCodeArea(ActionEvent event){
+        label.setText(Client.getRespServer());
+    }
 
     public void initialize() {
         // TODO
